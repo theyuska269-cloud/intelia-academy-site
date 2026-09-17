@@ -1,13 +1,16 @@
-const form = document.getElementById("registerForm");
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
 
-form.addEventListener("submit", function (event) {
-  event.preventDefault();
+if (menuBtn && navLinks) {
+  menuBtn.addEventListener("click", function () {
+    navLinks.classList.toggle("active");
+  });
 
-  const name = document.getElementById("name").value.trim();
+  const links = navLinks.querySelectorAll("a");
 
-  alert(
-    `Təşəkkür edirik, ${name}! Müraciətiniz qəbul olundu.`
-  );
-
-  form.reset();
-});
+  links.forEach(function (link) {
+    link.addEventListener("click", function () {
+      navLinks.classList.remove("active");
+    });
+  });
+}

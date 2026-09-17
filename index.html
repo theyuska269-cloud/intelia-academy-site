@@ -7,11 +7,15 @@
   <title>Intelia Academy</title>
 
   <link rel="stylesheet" href="./styles.css">
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
 </head>
 
 <body>
 
-  <!-- HEADER -->
   <header class="header">
     <div class="container navbar">
 
@@ -19,12 +23,15 @@
         <img src="./assets/logo.png" alt="Intelia Academy">
       </a>
 
-      <nav class="nav-links">
+      <nav class="nav-links" id="navLinks">
         <a href="#home">Ana səhifə</a>
         <a href="#courses">Kurslar</a>
         <a href="#about">Haqqımızda</a>
-        <a href="#contact">Əlaqə</a>
       </nav>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Menyu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
 
     </div>
   </header>
@@ -44,8 +51,7 @@
           </span>
 
           <h1>
-            Gələcəyin
-            bacarıqlarını
+            Gələcəyin bacarıqlarını
             <span>bu gündən öyrən</span>
           </h1>
 
@@ -54,14 +60,9 @@
             biliklərini inkişaf etdir və gələcəyin üçün güclü addım at.
           </p>
 
-          <a href="#contact" class="main-button">
-            Qeydiyyatdan keç
-          </a>
-
         </div>
 
 
-        <!-- HERO VISUAL -->
         <div class="hero-panel">
 
           <span class="panel-small">
@@ -69,8 +70,7 @@
           </span>
 
           <h2>
-            Biliklərini
-            praktikaya çevir.
+            Biliklərini praktikaya çevir.
           </h2>
 
           <p>
@@ -117,7 +117,7 @@
           </h2>
 
           <p>
-            Öz istiqamətini seç və öyrənməyə başla.
+            Öz istiqamətini seç və gələcəyin üçün yeni bacarıqlar qazan.
           </p>
 
         </div>
@@ -125,7 +125,6 @@
 
         <div class="course-grid">
 
-          <!-- COURSE 1 -->
           <article class="course-card">
 
             <div class="course-number">
@@ -137,7 +136,7 @@
             </h3>
 
             <p>
-              Müasir və responsive web saytların hazırlanmasını öyrən.
+              Müasir və responsive web saytların hazırlanmasını sıfırdan öyrən.
             </p>
 
             <ul>
@@ -145,12 +144,12 @@
               <li>CSS</li>
               <li>JavaScript</li>
               <li>Responsive Design</li>
+              <li>Real layihələr</li>
             </ul>
 
           </article>
 
 
-          <!-- COURSE 2 -->
           <article class="course-card">
 
             <div class="course-number">
@@ -169,13 +168,13 @@
               <li>Network Security</li>
               <li>Web Security</li>
               <li>Linux</li>
+              <li>Təhlükəsizlik əsasları</li>
               <li>Praktiki lablar</li>
             </ul>
 
           </article>
 
 
-          <!-- COURSE 3 -->
           <article class="course-card">
 
             <div class="course-number">
@@ -187,14 +186,15 @@
             </h3>
 
             <p>
-              Məlumatları analiz etməyi və vizuallaşdırmağı öyrən.
+              Məlumatları analiz etməyi, vizuallaşdırmağı və təqdim etməyi öyrən.
             </p>
 
             <ul>
               <li>Excel</li>
               <li>SQL</li>
-              <li>Visualization</li>
+              <li>Data Visualization</li>
               <li>Analitik düşüncə</li>
+              <li>Praktiki tapşırıqlar</li>
             </ul>
 
           </article>
@@ -213,14 +213,16 @@
 
         <div class="section-heading">
 
-          <span>NİYƏ INTELIA?</span>
+          <span>
+            NİYƏ INTELIA?
+          </span>
 
           <h2>
-            Təhsilə fərqli yanaşma
+            Təhsilə praktik yanaşma
           </h2>
 
           <p>
-            Məqsədimiz nəzəriyyəni real bacarığa çevirməkdir.
+            Məqsədimiz sadəcə nəzəriyyə yox, real bacarıqlar qazandırmaqdır.
           </p>
 
         </div>
@@ -239,7 +241,7 @@
             </h3>
 
             <p>
-              Dərslər real layihələr və tapşırıqlar üzərində qurulur.
+              Dərslər real layihələr və praktiki tapşırıqlar üzərində qurulur.
             </p>
 
           </article>
@@ -273,142 +275,10 @@
             </h3>
 
             <p>
-              Portfolio, CV və müsahibə hazırlığında dəstək al.
+              Portfolio, CV və müsahibə hazırlığı prosesində dəstək al.
             </p>
 
           </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- CONTACT -->
-    <section class="section contact" id="contact">
-
-      <div class="container">
-
-        <div class="contact-box">
-
-          <div class="contact-content">
-
-            <span>
-              QEYDİYYAT
-            </span>
-
-            <h2>
-              Intelia Academy-yə qoşul
-            </h2>
-
-            <p>
-              Məlumatlarını doldur, komandamız səninlə əlaqə saxlasın.
-            </p>
-
-            <div class="contact-details">
-
-              <p>
-                📞 +994 XX XXX XX XX
-              </p>
-
-              <p>
-                ✉ info@intelia.az
-              </p>
-
-              <p>
-                📍 Bakı, Azərbaycan
-              </p>
-
-            </div>
-
-          </div>
-
-
-          <form id="registerForm">
-
-            <div class="form-group">
-
-              <label for="name">
-                Ad və soyad
-              </label>
-
-              <input
-                id="name"
-                type="text"
-                placeholder="Ad və soyad"
-                required
-              >
-
-            </div>
-
-
-            <div class="form-group">
-
-              <label for="phone">
-                Telefon
-              </label>
-
-              <input
-                id="phone"
-                type="tel"
-                placeholder="+994 50 000 00 00"
-                required
-              >
-
-            </div>
-
-
-            <div class="form-group">
-
-              <label for="email">
-                Email
-              </label>
-
-              <input
-                id="email"
-                type="email"
-                placeholder="example@gmail.com"
-                required
-              >
-
-            </div>
-
-
-            <div class="form-group">
-
-              <label for="course">
-                Kurs
-              </label>
-
-              <select id="course" required>
-
-                <option value="">
-                  Kurs seç
-                </option>
-
-                <option value="frontend">
-                  Frontend Development
-                </option>
-
-                <option value="cyber">
-                  Cyber Security
-                </option>
-
-                <option value="data">
-                  Data Analytics
-                </option>
-
-              </select>
-
-            </div>
-
-
-            <button type="submit">
-              Müraciət et
-            </button>
-
-          </form>
 
         </div>
 
@@ -422,24 +292,92 @@
   <!-- FOOTER -->
   <footer class="footer">
 
-    <div class="container footer-content">
+    <div class="container footer-grid">
 
-      <div>
+      <div class="footer-brand">
 
-        <h3>
-          Intelia Academy
-        </h3>
+        <img
+          src="./assets/logo.png"
+          alt="Intelia Academy"
+          class="footer-logo"
+        >
 
         <p>
           Bilikdən gələcəyə.
         </p>
 
+        <p class="footer-description">
+          Müasir texnologiyaları praktiki şəkildə öyrən və gələcəyin
+          peşələrinə hazırlaş.
+        </p>
+
       </div>
 
 
-      <p class="copyright">
-        © 2026 Intelia Academy. Bütün hüquqlar qorunur.
-      </p>
+      <div class="footer-column">
+
+        <h3>
+          Kurslar
+        </h3>
+
+        <a href="#courses">
+          Frontend Development
+        </a>
+
+        <a href="#courses">
+          Cyber Security
+        </a>
+
+        <a href="#courses">
+          Data Analytics
+        </a>
+
+      </div>
+
+
+      <div class="footer-column footer-contact">
+
+        <h3>
+          Əlaqə
+        </h3>
+
+        <a href="tel:+994773102001">
+          <i class="fa-solid fa-phone"></i>
+          +994 77 310 20 01
+        </a>
+
+        <a
+          href="https://wa.me/994557865765"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i class="fa-brands fa-whatsapp"></i>
+          +994 55 786 57 65
+        </a>
+
+        <a
+          href="https://instagram.com/intelia_academy"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i class="fa-brands fa-instagram"></i>
+          @intelia_academy
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <div class="container footer-bottom-content">
+
+        <p>
+          © 2026 Intelia Academy. Bütün hüquqlar qorunur.
+        </p>
+
+      </div>
 
     </div>
 
