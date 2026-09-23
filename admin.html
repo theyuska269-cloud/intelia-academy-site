@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Intelia Academy - Admin Panel</title>
+
+  <link rel="stylesheet" href="./admin.css">
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+</head>
+
+<body>
+
+  <div class="admin-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="sidebar-brand">
+        <img src="./assets/logo.png" alt="Intelia Academy">
+        <div>
+          <strong>Intelia</strong>
+          <span>Admin Panel</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+
+        <a href="#" class="nav-item active" data-section="dashboard">
+          <i class="fa-solid fa-chart-pie"></i>
+          <span>İdarə paneli</span>
+        </a>
+
+        <a href="#" class="nav-item" data-section="applications">
+          <i class="fa-solid fa-user-plus"></i>
+          <span>Müraciətlər</span>
+        </a>
+
+        <a href="#" class="nav-item" data-section="students">
+          <i class="fa-solid fa-user-graduate"></i>
+          <span>Tələbələr</span>
+        </a>
+
+        <a href="#" class="nav-item" data-section="teachers">
+          <i class="fa-solid fa-chalkboard-user"></i>
+          <span>Müəllimlər</span>
+        </a>
+
+        <a href="#" class="nav-item" data-section="groups">
+          <i class="fa-solid fa-users"></i>
+          <span>Qruplar</span>
+        </a>
+
+        <a href="#" class="nav-item" data-section="attendance">
+          <i class="fa-solid fa-calendar-check"></i>
+          <span>Davamiyyət</span>
+        </a>
+
+        <a href="#" class="nav-item" data-section="payments">
+          <i class="fa-solid fa-wallet"></i>
+          <span>Ödənişlər</span>
+        </a>
+
+        <a href="#" class="nav-item" data-section="expenses">
+          <i class="fa-solid fa-money-bill-wave"></i>
+          <span>Xərclər</span>
+        </a>
+
+        <a href="#" class="nav-item" data-section="reports">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>Hesabatlar</span>
+        </a>
+
+      </nav>
+
+      <button class="logout-btn" id="logoutBtn">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        Çıxış
+      </button>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+      <header class="topbar">
+
+        <div>
+          <h1 id="pageTitle">İdarə paneli</h1>
+          <p id="pageSubtitle">Intelia Academy idarəetmə sistemi</p>
+        </div>
+
+        <div class="topbar-user">
+          <div class="user-avatar">A</div>
+
+          <div>
+            <strong>Admin</strong>
+            <span>Administrator</span>
+          </div>
+        </div>
+
+      </header>
+
+
+      <!-- DASHBOARD -->
+      <section class="content-section active-section" id="dashboard">
+
+        <div class="stats-grid">
+
+          <article class="stat-card">
+            <div class="stat-icon">
+              <i class="fa-solid fa-user-graduate"></i>
+            </div>
+
+            <div>
+              <span>Aktiv tələbələr</span>
+              <strong id="studentCount">0</strong>
+            </div>
+          </article>
+
+
+          <article class="stat-card">
+            <div class="stat-icon">
+              <i class="fa-solid fa-chalkboard-user"></i>
+            </div>
+
+            <div>
+              <span>Müəllimlər</span>
+              <strong id="teacherCount">0</strong>
+            </div>
+          </article>
+
+
+          <article class="stat-card">
+            <div class="stat-icon">
+              <i class="fa-solid fa-users"></i>
+            </div>
+
+            <div>
+              <span>Aktiv qruplar</span>
+              <strong id="groupCount">0</strong>
+            </div>
+          </article>
+
+
+          <article class="stat-card">
+            <div class="stat-icon">
+              <i class="fa-solid fa-user-plus"></i>
+            </div>
+
+            <div>
+              <span>Yeni müraciətlər</span>
+              <strong id="applicationCount">0</strong>
+            </div>
+          </article>
+
+        </div>
+
+
+        <div class="finance-grid">
+
+          <article class="finance-card">
+            <span>Tələbə ödənişləri</span>
+            <strong id="incomeTotal">0.00 ₼</strong>
+          </article>
+
+          <article class="finance-card">
+            <span>Xərclər</span>
+            <strong id="expenseTotal">0.00 ₼</strong>
+          </article>
+
+          <article class="finance-card">
+            <span>Balans</span>
+            <strong id="balanceTotal">0.00 ₼</strong>
+          </article>
+
+        </div>
+
+
+        <div class="dashboard-grid">
+
+          <article class="panel-card">
+
+            <div class="panel-heading">
+              <h2>Son müraciətlər</h2>
+            </div>
+
+            <div class="table-wrap">
+
+              <table>
+                <thead>
+                  <tr>
+                    <th>Ad soyad</th>
+                    <th>Telefon</th>
+                    <th>Kurs</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+
+                <tbody id="recentApplications">
+                  <tr>
+                    <td colspan="4" class="empty-cell">
+                      Hələ müraciət yoxdur
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
+
+          </article>
+
+
+          <article class="panel-card">
+
+            <div class="panel-heading">
+              <h2>Son ödənişlər</h2>
+            </div>
+
+            <div class="table-wrap">
+
+              <table>
+                <thead>
+                  <tr>
+                    <th>Tələbə</th>
+                    <th>Məbləğ</th>
+                    <th>Tarix</th>
+                  </tr>
+                </thead>
+
+                <tbody id="recentPayments">
+                  <tr>
+                    <td colspan="3" class="empty-cell">
+                      Hələ ödəniş yoxdur
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </section>
+
+
+      <!-- APPLICATIONS -->
+      <section class="content-section" id="applications">
+
+        <div class="section-toolbar">
+          <div>
+            <h2>Müraciətlər</h2>
+            <p>Yeni kurs müraciətlərini idarə et.</p>
+          </div>
+
+          <button class="primary-btn" id="addApplicationBtn">
+            <i class="fa-solid fa-plus"></i>
+            Yeni müraciət
+          </button>
+        </div>
+
+        <div class="panel-card">
+          <div class="table-wrap">
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Ad soyad</th>
+                  <th>Telefon</th>
+                  <th>Kurs</th>
+                  <th>Status</th>
+                  <th>Əməliyyat</th>
+                </tr>
+              </thead>
+
+              <tbody id="applicationsTable"></tbody>
+            </table>
+
+          </div>
+        </div>
+
+      </section>
+
+
+      <!-- STUDENTS -->
+      <section class="content-section" id="students">
+
+        <div class="section-toolbar">
+
+          <div>
+            <h2>Tələbələr</h2>
+            <p>Tələbə bazasını idarə et.</p>
+          </div>
+
+          <button class="primary-btn" id="addStudentBtn">
+            <i class="fa-solid fa-plus"></i>
+            Tələbə əlavə et
+          </button>
+
+        </div>
+
+        <div class="panel-card">
+          <div class="table-wrap">
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Ad soyad</th>
+                  <th>Telefon</th>
+                  <th>Kurs</th>
+                  <th>Qrup</th>
+                  <th>Status</th>
+                  <th>Əməliyyat</th>
+                </tr>
+              </thead>
+
+              <tbody id="studentsTable"></tbody>
+            </table>
+
+          </div>
+        </div>
+
+      </section>
+
+
+      <!-- TEACHERS -->
+      <section class="content-section" id="teachers">
+
+        <div class="section-toolbar">
+          <div>
+            <h2>Müəllimlər</h2>
+            <p>Müəllim məlumatlarını idarə et.</p>
+          </div>
+
+          <button class="primary-btn" id="addTeacherBtn">
+            <i class="fa-solid fa-plus"></i>
+            Müəllim əlavə et
+          </button>
+        </div>
+
+        <div class="panel-card">
+          <div class="table-wrap">
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Ad soyad</th>
+                  <th>Telefon</th>
+                  <th>İxtisas</th>
+                  <th>Əməliyyat</th>
+                </tr>
+              </thead>
+
+              <tbody id="teachersTable"></tbody>
+            </table>
+
+          </div>
+        </div>
+
+      </section>
+
+
+      <!-- GROUPS -->
+      <section class="content-section" id="groups">
+
+        <div class="section-toolbar">
+          <div>
+            <h2>Qruplar</h2>
+            <p>Aktiv dərs qruplarını idarə et.</p>
+          </div>
+
+          <button class="primary-btn" id="addGroupBtn">
+            <i class="fa-solid fa-plus"></i>
+            Qrup əlavə et
+          </button>
+        </div>
+
+        <div class="cards-grid" id="groupsGrid"></div>
+
+      </section>
+
+
+      <!-- ATTENDANCE -->
+      <section class="content-section" id="attendance">
+
+        <div class="section-toolbar">
+          <div>
+            <h2>Davamiyyət</h2>
+            <p>Tələbələrin davamiyyətini qeyd et.</p>
+          </div>
+        </div>
+
+        <div class="panel-card">
+
+          <div class="attendance-controls">
+
+            <select id="attendanceGroup">
+              <option value="">Qrup seç</option>
+            </select>
+
+            <input type="date" id="attendanceDate">
+
+            <button class="primary-btn" id="loadAttendanceBtn">
+              Göstər
+            </button>
+
+          </div>
+
+          <div id="attendanceList"></div>
+
+        </div>
+
+      </section>
+
+
+      <!-- PAYMENTS -->
+      <section class="content-section" id="payments">
+
+        <div class="section-toolbar">
+          <div>
+            <h2>Ödənişlər</h2>
+            <p>Tələbə ödənişlərini idarə et.</p>
+          </div>
+
+          <button class="primary-btn" id="addPaymentBtn">
+            <i class="fa-solid fa-plus"></i>
+            Ödəniş əlavə et
+          </button>
+        </div>
+
+        <div class="panel-card">
+          <div class="table-wrap">
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Tələbə</th>
+                  <th>Məbləğ</th>
+                  <th>Tarix</th>
+                  <th>Qeyd</th>
+                  <th>Əməliyyat</th>
+                </tr>
+              </thead>
+
+              <tbody id="paymentsTable"></tbody>
+            </table>
+
+          </div>
+        </div>
+
+      </section>
+
+
+      <!-- EXPENSES -->
+      <section class="content-section" id="expenses">
+
+        <div class="section-toolbar">
+          <div>
+            <h2>Xərclər</h2>
+            <p>Akademiyanın xərclərini qeyd et.</p>
+          </div>
+
+          <button class="primary-btn" id="addExpenseBtn">
+            <i class="fa-solid fa-plus"></i>
+            Xərc əlavə et
+          </button>
+        </div>
+
+        <div class="panel-card">
+          <div class="table-wrap">
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Başlıq</th>
+                  <th>Məbləğ</th>
+                  <th>Tarix</th>
+                  <th>Əməliyyat</th>
+                </tr>
+              </thead>
+
+              <tbody id="expensesTable"></tbody>
+            </table>
+
+          </div>
+        </div>
+
+      </section>
+
+
+      <!-- REPORTS -->
+      <section class="content-section" id="reports">
+
+        <div class="section-toolbar">
+          <div>
+            <h2>Hesabatlar</h2>
+            <p>Ümumi göstəriciləri izlə.</p>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+
+          <article class="stat-card">
+            <div class="stat-icon">
+              <i class="fa-solid fa-user-graduate"></i>
+            </div>
+
+            <div>
+              <span>Tələbələr</span>
+              <strong id="reportStudents">0</strong>
+            </div>
+          </article>
+
+
+          <article class="stat-card">
+            <div class="stat-icon">
+              <i class="fa-solid fa-wallet"></i>
+            </div>
+
+            <div>
+              <span>Ümumi gəlir</span>
+              <strong id="reportIncome">0 ₼</strong>
+            </div>
+          </article>
+
+
+          <article class="stat-card">
+            <div class="stat-icon">
+              <i class="fa-solid fa-money-bill-wave"></i>
+            </div>
+
+            <div>
+              <span>Ümumi xərc</span>
+              <strong id="reportExpenses">0 ₼</strong>
+            </div>
+          </article>
+
+
+          <article class="stat-card">
+            <div class="stat-icon">
+              <i class="fa-solid fa-scale-balanced"></i>
+            </div>
+
+            <div>
+              <span>Balans</span>
+              <strong id="reportBalance">0 ₼</strong>
+            </div>
+          </article>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modalOverlay">
+
+    <div class="modal">
+
+      <div class="modal-header">
+        <h2 id="modalTitle">Əlavə et</h2>
+
+        <button id="closeModalBtn">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form id="dynamicForm"></form>
+
+    </div>
+
+  </div>
+
+
+  <script src="./admin.js"></script>
+
+</body>
+</html>
