@@ -3,199 +3,105 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Intelia Academy - Giriş</title>
-
-  <link rel="stylesheet" href="./login.css">
-
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-  >
+  <meta name="theme-color" content="#0a1c38">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin Panel — Intelia Academy</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-  <div class="login-page">
+<!-- ============ LOGIN ============ -->
+<div id="loginPage" class="login-page hidden">
+  <section class="login-brand">
+    <div class="login-brand-inner">
+      <div class="brand-row">
+        <span class="logo-chip"><img src="assets/logo.png" alt=""></span>
+        <span><b>Intelia</b> Academy</span>
+      </div>
+      <div>
+        <h1>Tədris mərkəzini bir paneldən idarə et.</h1>
+        <p>Müraciətlər, tələbələr, qruplar və ödənişlər — hamısı real vaxtda, bir yerdə.</p>
+      </div>
+      <ul class="login-points">
+        <li>Onlayn qeydiyyat və qəbz yoxlaması</li>
+        <li>Qrup, müəllim və kurs idarəetməsi</li>
+        <li>Ödəniş və gəlir hesabatları</li>
+      </ul>
+    </div>
+  </section>
 
-    <section class="login-left">
+  <section class="login-panel">
+    <form class="login-box" id="loginForm" novalidate>
+      <span class="logo-chip mobile-only"><img src="assets/logo.png" alt="Intelia Academy"></span>
+      <span class="eyebrow">İdarəetmə paneli</span>
+      <h2>Xoş gəlmisiniz</h2>
+      <p class="muted">Davam etmək üçün admin hesabınıza daxil olun.</p>
 
-      <div class="brand-box">
-
-        <img
-          src="./assets/logo.png"
-          alt="Intelia Academy"
-          class="login-logo"
-        >
-
-        <h1>
-          Intelia Academy
-        </h1>
-
-        <p>
-          Kurs və tədris prosesini bir paneldən idarə et.
-        </p>
-
+      <div class="field">
+        <label for="username">İstifadəçi adı</label>
+        <input class="input input-lg" id="username" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="istifadəçi adı" required>
+      </div>
+      <div class="field">
+        <label for="password">Şifrə</label>
+        <div class="password-wrap">
+          <input class="input input-lg" id="password" name="password" type="password" autocomplete="current-password" placeholder="••••••••" required>
+          <button type="button" class="pw-toggle" id="pwToggle" aria-label="Şifrəni göstər"></button>
+        </div>
       </div>
 
+      <div id="loginError"></div>
 
-      <div class="feature-list">
+      <button class="btn btn-dark btn-lg btn-block" id="loginBtn" type="submit">Daxil ol</button>
+      <small class="login-foot">© <span class="year"></span> Intelia Academy · Təhlükəsiz giriş</small>
+    </form>
+  </section>
+</div>
 
-        <div class="feature-item">
+<!-- ============ APP ============ -->
+<div id="app" class="app hidden">
 
-          <div class="feature-icon">
-            <i class="fa-solid fa-user-graduate"></i>
-          </div>
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <span class="logo-chip"><img src="assets/logo.png" alt=""></span>
+      <div><b>Intelia</b><small>Academy CRM</small></div>
+    </div>
 
-          <div>
-            <strong>Tələbələr</strong>
-            <span>Tələbə məlumatlarını idarə et</span>
-          </div>
+    <nav class="nav" id="nav"></nav>
 
-        </div>
+    <div class="sidebar-foot">
+      <button class="nav-item" id="logoutBtn" type="button"></button>
+    </div>
+  </aside>
+  <div class="sidebar-backdrop" id="backdrop"></div>
 
-
-        <div class="feature-item">
-
-          <div class="feature-icon">
-            <i class="fa-solid fa-users"></i>
-          </div>
-
-          <div>
-            <strong>Qruplar</strong>
-            <span>Dərs qruplarını və müəllimləri idarə et</span>
-          </div>
-
-        </div>
-
-
-        <div class="feature-item">
-
-          <div class="feature-icon">
-            <i class="fa-solid fa-chart-line"></i>
-          </div>
-
-          <div>
-            <strong>Hesabatlar</strong>
-            <span>Ödəniş və fəaliyyət məlumatlarını izlə</span>
-          </div>
-
-        </div>
-
+  <main class="main">
+    <header class="topbar">
+      <button class="btn btn-ghost btn-icon menu-btn" id="menuBtn" type="button" aria-label="Menyu"></button>
+      <div class="topbar-title">
+        <h1 id="pageTitle">Dashboard</h1>
+        <p id="pageSub"></p>
       </div>
-
-    </section>
-
-
-    <section class="login-right">
-
-      <div class="login-card">
-
-        <div class="login-heading">
-
-          <span>
-            İDARƏETMƏ PANELİ
-          </span>
-
-          <h2>
-            Daxil ol
-          </h2>
-
-          <p>
-            Intelia Academy admin hesabına daxil ol.
-          </p>
-
+      <div class="topbar-actions">
+        <button class="btn btn-outline btn-sm hide-sm" id="copyLinkBtn" type="button"></button>
+        <div class="admin-chip">
+          <div class="avatar" id="adminAvatar">A</div>
+          <div class="hide-sm"><b id="adminName">Admin</b><small id="adminRole"></small></div>
         </div>
-
-
-        <form id="loginForm">
-
-          <div class="form-group">
-
-            <label for="username">
-              İstifadəçi adı
-            </label>
-
-            <div class="input-wrap">
-
-              <i class="fa-regular fa-user"></i>
-
-              <input
-                id="username"
-                type="text"
-                placeholder="İstifadəçi adını daxil et"
-                autocomplete="username"
-                required
-              >
-
-            </div>
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label for="password">
-              Şifrə
-            </label>
-
-            <div class="input-wrap">
-
-              <i class="fa-solid fa-lock"></i>
-
-              <input
-                id="password"
-                type="password"
-                placeholder="Şifrənizi daxil edin"
-                autocomplete="current-password"
-                required
-              >
-
-              <button
-                type="button"
-                id="togglePassword"
-                class="password-toggle"
-                aria-label="Şifrəni göstər"
-              >
-                <i class="fa-regular fa-eye"></i>
-              </button>
-
-            </div>
-
-          </div>
-
-
-          <p
-            id="loginError"
-            class="login-error"
-          ></p>
-
-
-          <button
-            type="submit"
-            class="login-button"
-          >
-            <i class="fa-solid fa-right-to-bracket"></i>
-            Daxil ol
-          </button>
-
-        </form>
-
-
-        <div class="login-footer">
-          <p>
-            © 2026 Intelia Academy
-          </p>
-        </div>
-
       </div>
+    </header>
 
-    </section>
+    <div id="content" class="content"></div>
+  </main>
+</div>
 
-  </div>
+<div id="modalRoot"></div>
 
-
-  <script src="./login.js"></script>
-
+<script src="common.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

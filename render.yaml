@@ -1,0 +1,47 @@
+# Render Blueprint — Intelia Academy (FastAPI + SQLite)
+# Render Dashboard → New → Blueprint → bu repository seçilir.
+services:
+  - type: web
+    name: intelia-academy
+    runtime: python
+    # SQLite və qəbz faylları üçün davamlı disk lazımdır; disk yalnız ödənişli planlarda var.
+    plan: starter
+    region: frankfurt
+    branch: production
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    autoDeploy: true
+    disk:
+      name: intelia-data
+      mountPath: /var/data
+      sizeGB: 1
+    domains:
+      - inteliaacademy.com
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.10
+      # JWT açarı — Render özü təsadüfi yaradır
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: "720"
+      # İlkin admin şifrələri — Render panelində əl ilə daxil edilir (GitHub-a düşmür)
+      - key: RAHIB_PASSWORD
+        sync: false
+      - key: YUSIF_PASSWORD
+        sync: false
+      # Baza, qəbzlər və ehtiyat nüsxələr davamlı diskdə
+      - key: DATABASE_PATH
+        value: /var/data/intelia.db
+      - key: UPLOAD_DIR
+        value: /var/data/uploads
+      - key: BACKUP_DIR
+        value: /var/data/backups
+      - key: MAX_UPLOAD_MB
+        value: "10"
+      - key: CORS_ORIGINS
+        value: https://inteliaacademy.com,https://www.inteliaacademy.com
+      # Render proxy-sinin X-Forwarded-* başlıqlarına etibar (real IP və https üçün)
+      - key: FORWARDED_ALLOW_IPS
+        value: "*"

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a1c38">
+  <meta name="description" content="Intelia Academy kurslarına onlayn qeydiyyat">
+  <title>Qeydiyyat — Intelia Academy</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="register.css">
+</head>
+<body>
+
+<div class="reg-layout">
+
+  <aside class="reg-aside">
+    <div class="reg-aside-inner">
+      <a class="reg-logo" href="register.html" aria-label="Intelia Academy">
+        <span class="logo-chip"><img src="assets/logo.png" alt=""></span>
+        <span><b>Intelia</b> Academy</span>
+      </a>
+
+      <div class="reg-pitch">
+        <span class="eyebrow">Onlayn qeydiyyat</span>
+        <h1>Gələcəyinə bu gün yatırım et.</h1>
+        <p>Kursunu və sənə uyğun qrupu seç, ödənişi et — qalanını komandamız həll edəcək.</p>
+      </div>
+
+      <ol class="reg-steps-list" id="asideSteps">
+        <li data-step="1"><span>1</span><div><b>Şəxsi məlumatlar</b><small>Əlaqə və təhsil</small></div></li>
+        <li data-step="2"><span>2</span><div><b>Kurs və qrup</b><small>Dərs günləri və saatı</small></div></li>
+        <li data-step="3"><span>3</span><div><b>Ödəniş</b><small>Köçürmə və qəbz</small></div></li>
+      </ol>
+
+      <div class="reg-contact hidden" id="asideContact"></div>
+    </div>
+  </aside>
+
+  <main class="reg-main">
+    <header class="reg-mobile-head">
+      <span class="logo-chip"><img src="assets/logo.png" alt="Intelia Academy"></span>
+      <div><b>Intelia Academy</b><small>Onlayn qeydiyyat</small></div>
+    </header>
+
+    <div class="reg-card" id="regCard">
+      <div class="reg-loading" id="regLoading">
+        <span class="spinner"></span> Yüklənir…
+      </div>
+    </div>
+
+    <p class="reg-foot">© <span id="year"></span> Intelia Academy · Məlumatlarınız yalnız qeydiyyat məqsədilə istifadə olunur.</p>
+  </main>
+
+</div>
+
+<script src="common.js"></script>
+<script src="register.js"></script>
+</body>
+</html>

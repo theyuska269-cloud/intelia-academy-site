@@ -1,0 +1,32 @@
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# Gizli məlumatlar — heç vaxt GitHub-a göndərilmir
+.env
+*.env
+!.env.example
+backend/.env
+
+# Database (admin şifrə hash-ları, tələbə məlumatları)
+*.db
+*.db-wal
+*.db-shm
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# Yüklənən qəbzlər və ehtiyat nüsxələr
+backend/uploads/
+uploads/
+backend/backups/
+backups/
+
+# Digər
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
